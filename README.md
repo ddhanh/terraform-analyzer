@@ -4,7 +4,7 @@
 
 ## Visit Dashboard
 
-<img>
+<img width="1136" height="990" alt="Screenshot 2025-12-12 at 3 41 14 PM" src="https://github.com/user-attachments/assets/20660749-448b-4ee7-af36-26082999b6a2" />
 
 
 ## Summary
