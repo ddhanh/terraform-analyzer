@@ -83,70 +83,72 @@ export function ResourceList({ resources }: ResourceListProps) {
           )}
         </div>
 
-        {/* Filter buttons */}
-        <div className="flex flex-wrap gap-4">
-          {/* Action filters */}
-          <div className="flex items-center gap-2">
+      {/* Filter buttons */}
+      <div className="flex flex-col gap-3">
+        {/* Action filters */}
+        <div className="flex items-start sm:items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 shrink-0">
             <Filter className="w-4 h-4 text-muted-foreground" />
             <span className="text-xs text-muted-foreground uppercase">Action:</span>
-            <div className="flex gap-1">
-              {actionOptions.filter(o => o.count > 0 || o.value === 'all').map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => setActionFilter(option.value)}
-                  className={cn(
-                    'px-2 py-1 text-xs font-medium rounded transition-colors',
-                    actionFilter === option.value
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted/50 text-muted-foreground hover:bg-muted'
-                  )}
-                >
-                  {option.label}
-                  <span className="ml-1 opacity-70">({option.count})</span>
-                </button>
-              ))}
-            </div>
           </div>
-
-          {/* Risk filters */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground uppercase">Risk:</span>
-            <div className="flex gap-1">
-              {riskOptions.filter(o => o.count > 0 || o.value === 'all').map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => setRiskFilter(option.value)}
-                  className={cn(
-                    'px-2 py-1 text-xs font-medium rounded transition-colors flex items-center gap-1',
-                    riskFilter === option.value
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted/50 text-muted-foreground hover:bg-muted'
-                  )}
-                >
-                  {option.value !== 'all' && (
-                    <span className={cn('w-2 h-2 rounded-full', option.color)} />
-                  )}
-                  {option.label}
-                  <span className="opacity-70">({option.count})</span>
-                </button>
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-1">
+            {actionOptions.filter(o => o.count > 0 || o.value === 'all').map((option) => (
+              <button
+                key={option.value}
+                onClick={() => setActionFilter(option.value)}
+                className={cn(
+                  'px-2 py-1 text-xs font-medium rounded transition-colors whitespace-nowrap',
+                  actionFilter === option.value
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-muted'
+                )}
+              >
+                {option.label}
+                <span className="ml-1 opacity-70">({option.count})</span>
+              </button>
+            ))}
           </div>
-
-          {/* Clear filters */}
-          {hasFilters && (
-            <button
-              onClick={() => {
-                setSearch('');
-                setActionFilter('all');
-                setRiskFilter('all');
-              }}
-              className="text-xs text-primary hover:underline ml-auto"
-            >
-              Clear filters
-            </button>
-          )}
         </div>
+
+        {/* Risk filters */}
+        <div className="flex items-start sm:items-center gap-2 flex-wrap">
+          <span className="text-xs text-muted-foreground uppercase shrink-0">Risk:</span>
+          <div className="flex flex-wrap gap-1">
+            {riskOptions.filter(o => o.count > 0 || o.value === 'all').map((option) => (
+              <button
+                key={option.value}
+                onClick={() => setRiskFilter(option.value)}
+                className={cn(
+                  'px-2 py-1 text-xs font-medium rounded transition-colors flex items-center gap-1 whitespace-nowrap',
+                  riskFilter === option.value
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-muted'
+                )}
+              >
+                {option.value !== 'all' && (
+                  <span className={cn('w-2 h-2 rounded-full', option.color)} />
+                )}
+                {option.label}
+                <span className="opacity-70">({option.count})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Clear filters */}
+        {hasFilters && (
+          <button
+            onClick={() => {
+              setSearch('');
+              setActionFilter('all');
+              setRiskFilter('all');
+            }}
+            className="text-xs text-primary hover:underline self-start"
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
       </div>
 
       {/* Results count */}
