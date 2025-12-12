@@ -33,7 +33,7 @@ export function Header({ onReset }: HeaderProps) {
               <span>terraform show -json</span>
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/ddhanh/terraform-analyzer"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg hover:bg-muted transition-colors"
